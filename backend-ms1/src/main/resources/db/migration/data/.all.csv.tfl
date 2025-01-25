@@ -1,0 +1,5 @@
+id<#list pojo.fakeDataExamples[0].elements as element>,${element.key}</#list>
+<#list pojo.fakeDataExamples as fakeDataExample>
+${fakeDataExample_index + 1}<#list fakeDataExample.elements as element>,${element.value}</#list>
+</#list>
+

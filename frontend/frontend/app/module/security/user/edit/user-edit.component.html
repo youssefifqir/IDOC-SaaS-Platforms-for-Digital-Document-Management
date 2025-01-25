@@ -1,0 +1,181 @@
+<p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="{{'user.tabPan' | translate}}"
+          [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'user.tabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="6">{{'user.username' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                               placeholder="{{'user.username' | translate}}" id="6" [(ngModel)]="item.username"
+                        />
+
+                    </div>
+
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'user.email' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                               placeholder="{{'user.email' | translate}}" id="3" [(ngModel)]="item.email"
+                        />
+
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'user.password' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                               placeholder="{{'user.password' | translate}}" id="7" [(ngModel)]="item.password"
+                        />
+
+                    </div>
+                    <div class="field align-inputswitch col-12  md:col-6">
+                        <div class="label-inputswitch">
+                            <label for="1">{{'user.credentialsNonExpired' | translate}}</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="1" [(ngModel)]="item.credentialsNonExpired"
+                            >
+                            </p-inputSwitch>
+
+                        </div>
+                    </div>
+
+
+                    <div class="field align-inputswitch col-12  md:col-6">
+                        <div class="label-inputswitch">
+                            <label for="2">{{'user.enabled' | translate}}</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="2" [(ngModel)]="item.enabled"
+                            >
+                            </p-inputSwitch>
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="field align-inputswitch col-12  md:col-6">
+                        <div class="label-inputswitch">
+                            <label for="4">{{'user.accountNonExpired' | translate}}</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="4" [(ngModel)]="item.accountNonExpired"
+                            >
+                            </p-inputSwitch>
+
+                        </div>
+                    </div>
+
+
+                    <div class="field align-inputswitch col-12  md:col-6">
+                        <div class="label-inputswitch">
+                            <label for="5">{{'user.accountNonLocked' | translate}}</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="5" [(ngModel)]="item.accountNonLocked"
+                            >
+                            </p-inputSwitch>
+
+                        </div>
+                    </div>
+
+                    <!--
+                     <div class="field col-12  md:col-6">
+                        <label>Role</label>
+                        <p-multiSelect [options]="roleUsers" [(ngModel)]="item.roleUsers" itemSize="30" [virtualScroll]="true" defaultLabel="Select un role" optionLabel="role.authority"  display="chip"></p-multiSelect>
+                    </div>
+                    -->
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="role">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="roleUsers" [(selection)]="item.roleUsers"
+                                     dataKey="role.authority" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Role</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>
+                                            <p-tableCheckbox [value]="p"></p-tableCheckbox>
+                                        </td>
+                                        <td>{{p.role?.authority}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="{{'user.modelPermissionUsers' | translate}}">
+                <div class="flex justify-content-center align-items-center gap-2 mb-3">
+                    <p-inputSwitch inputId="Permission value" (onChange)="editPermission()" [(ngModel)]="globalValue"
+                                   label="Permission value"></p-inputSwitch>
+                    <span>Permission value</span>
+                </div>
+                <p-table [value]="item.modelPermissionUsers" sortField="modelPermission.reference"
+                         sortMode="single" dataKey="modelPermission.reference" rowGroupMode="subheader"
+                         groupRowsBy="modelPermission.reference" [tableStyle]="{'min-width': '70rem'}">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width:25%">Model Permission</th>
+                            <th style="width:25%">Action Permission</th>
+                            <th style="width:25%">Value</th>
+                            <th style="width:25%">Sub Atribute</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="groupheader" let-p let-rowIndex="rowIndex" let-expanded="expanded">
+                        <tr>
+                            <td colspan="2">
+                                <button type="button" pButton pRipple [pRowToggler]="p"
+                                        class="p-button-text p-button-rounded p-button-plain mr-2"
+                                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                                <span class="font-bold ml-2">{{p.modelPermission?.reference}}</span>
+                            </td>
+                            <td colspan="2">
+                                <div class="input-switch">
+                                    <p-inputSwitch id="16" (onChange)="editModelPermission(p)" [(ngModel)]="p.modelPermission.globalValue"></p-inputSwitch>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="rowexpansion" let-p let-rowIndex="rowIndex">
+                        <tr>
+                            <td></td>
+                            <td>{{p.actionPermission?.reference}}</td>
+                            <td>
+                                <div class="input-switch">
+                                    <p-inputSwitch id="10" [(ngModel)]="p.value"></p-inputSwitch>
+                                </div>
+                            </td>
+                            <td>{{p.subAttribute}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+
+            </p-tabPanel>
+
+        </p-tabView>
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-flexbox">
+
+            <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideEditDialog()"></button>
+
+            <button pButton pRipple label="Valider" icon="pi pi-check"  (click)="edit()"></button>
+
+        </div>
+    </ng-template>
+
+
+    <app-action-permission-create></app-action-permission-create>
+    <app-model-permission-create></app-model-permission-create>
+    <app-role-create></app-role-create>
+
+</p-dialog>

@@ -1,0 +1,346 @@
+<div class="grid"  *ngIf="listActionIsValid">
+    <div class="col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="mb-4">
+                <ng-template pTemplate="left">
+                                        <button pButton pRipple label=" {{'new' | translate}}" icon="pi pi-plus" class="p-button-info mr-2 mb-2" (click)="openCreate('Document')" *ngIf="createActionIsValid"></button>
+                    <button [disabled]="isSelectionDisabled()" pButton pRipple label=" {{'delete' | translate}}" icon="pi pi-trash" class="p-button-danger mr-2 mb-2" (click)=deleteMultiple()  *ngIf="deleteActionIsValid"></button>
+                    <button pButton pRipple label=" {{'search' | translate}}" icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}" class="p-button-secondary mr-2 mb-2" (click)="this.showSearch()"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label=" {{'export' | translate}}" icon="pi pi-download" styleClass="p-button-secondary" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="col-12">
+                    <div class="flex flex-wrap p-fluid col-12">
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="1">{{'document.reference' | translate}}</label>
+                            <input  class="w-full"  pInputText id="1" type="text"  [(ngModel)]="criteria.referenceLike">
+                        </div>
+
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label class="font-bold block mb-2" for="2-1">{{'document.uploadDateMin' | translate}}</label>
+                            <p-calendar class="mr-2" [(ngModel)]="criteria.uploadDateFrom"
+                                    id="2-1" dateFormat="dd-MM-yy"  [showIcon]="true"  class="p-fluid"></p-calendar>
+                        </div>
+
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="2-2">{{'document.uploadDateMax' | translate}}</label>
+                            <p-calendar class="mr-2" [(ngModel)]="criteria.uploadDateTo"
+                                    id="2-2" dateFormat="dd-MM-yy"  [showIcon]="true" class="p-fluid"></p-calendar>
+                        </div>
+
+
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label class="font-bold block mb-2" for="3-1">{{'document.dateLastUpdateMin' | translate}}</label>
+                            <p-calendar class="mr-2" [(ngModel)]="criteria.dateLastUpdateFrom"
+                                    id="3-1" dateFormat="dd-MM-yy"  [showIcon]="true"  class="p-fluid"></p-calendar>
+                        </div>
+
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="3-2">{{'document.dateLastUpdateMax' | translate}}</label>
+                            <p-calendar class="mr-2" [(ngModel)]="criteria.dateLastUpdateTo"
+                                    id="3-2" dateFormat="dd-MM-yy"  [showIcon]="true" class="p-fluid"></p-calendar>
+                        </div>
+
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="4">{{'document.content' | translate}}</label>
+                            <input  class="w-full"  pInputText id="4" type="text"  [(ngModel)]="criteria.contentLike">
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="5">{{'document.folder' | translate}}</label>
+                            <p-dropdown  id="5" [options]="yesOrNoFolder" [(ngModel)]="criteria.folder"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'document.folder' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="6-1">{{'document.sizeMin' | translate}}</label>
+                            <p-inputNumber  mode="decimal" [(ngModel)]="criteria.sizeMin" id="6-1"></p-inputNumber>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="6-2">{{'document.sizeMax' | translate}}</label>
+                            <p-inputNumber  mode="decimal" [(ngModel)]="criteria.sizeMax" id="6-2"></p-inputNumber>
+                       </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="7-2">{{'document.documentType' | translate}}</label>
+                            <p-dropdown [options]="documentTypes" [(ngModel)]="criteria.documentType" id="7" [filter]="true" class="p-fluid"
+                                        [showClear]="true"  placeholder="{{'document.documentType' | translate}}" optionLabel="libelle">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="8-2">{{'document.documentState' | translate}}</label>
+                            <p-dropdown [options]="documentStates" [(ngModel)]="criteria.documentState" id="8" [filter]="true" class="p-fluid"
+                                        [showClear]="true"  placeholder="{{'document.documentState' | translate}}" optionLabel="libelle">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="9-2">{{'document.documentCategorie' | translate}}</label>
+                            <p-dropdown [options]="documentCategories" [(ngModel)]="criteria.documentCategorie" id="9" [filter]="true" class="p-fluid"
+                                        [showClear]="true"  placeholder="{{'document.documentCategorie' | translate}}" optionLabel="libelle">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="12-2">{{'document.proprietaire' | translate}}</label>
+                            <p-multiSelect   appendTo="body" [options]="proprietaires" [(ngModel)]="criteria.proprietaires" itemSize="30" [virtualScroll]="true"  class="p-fluid"
+                                                  defaultLabel="{{'document.proprietaire' | translate}}" id="12" optionLabel="id"  display="chip">
+                            </p-multiSelect>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="13">{{'document.archive' | translate}}</label>
+                            <p-dropdown  id="13" [options]="yesOrNoArchive" [(ngModel)]="criteria.archive"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'document.archive' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="14">{{'document.versionne' | translate}}</label>
+                            <p-dropdown  id="14" [options]="yesOrNoVersionne" [(ngModel)]="criteria.versionne"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'document.versionne' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="15-2">{{'document.entiteAdministrative' | translate}}</label>
+                            <p-dropdown [options]="entiteAdministratives" [(ngModel)]="criteria.entiteAdministrative" id="15" [filter]="true" class="p-fluid"
+                                        [showClear]="true"  placeholder="{{'document.entiteAdministrative' | translate}}" optionLabel="libelle">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="16-2">{{'document.entiteAdministrativeProprietaire' | translate}}</label>
+                            <p-dropdown [options]="entiteAdministrativeProprietaires" [(ngModel)]="criteria.entiteAdministrativeProprietaire" id="16" [filter]="true" class="p-fluid"
+                                        [showClear]="true"  placeholder="{{'document.entiteAdministrativeProprietaire' | translate}}" optionLabel="libelle">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                    <div [style]="{ marginTop : '1rem', display: 'flex', justifyContent: 'flex-end' }">
+                        <button pButton pRipple label="{{'validate' | translate}}" icon="pi pi-sort-amount-down" class="p-button-info mr-2" (click)="findPaginatedByCriteria()"></button>
+                    </div>
+                </div>
+
+
+            </p-toolbar>
+
+
+            <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
+                    [globalFilterFields]="['reference', 'uploadDate', 'dateLastUpdate', 'content', 'folder', 'size', 'documentTypelibelle', 'documentStatelibelle', 'documentCategorielibelle', 'proprietaireid', 'archive', 'versionne', 'entiteAdministrativelibelle', 'entiteAdministrativeProprietairelibelle']" [(selection)]="selections"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                    currentPageReportTemplate="{{'les éléments de {first} à {last} sur {totalRecords} ' | translate}}"
+                    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column flex-row justify-content-between table-header">
+                        <h5 class="p-m-0">{{'document.header' | translate}}</h5>
+                        <span class="p-input-icon-left ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="{{'searchInput' | translate}}" (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                                
+                        <th pSortableColumn="reference">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.reference' | translate}}</span>
+                                <p-sortIcon field="reference"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.reference" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="uploadDate">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.uploadDate' | translate}}</span>
+                                <p-sortIcon field="uploadDate"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="dateLastUpdate">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.dateLastUpdate' | translate}}</span>
+                                <p-sortIcon field="dateLastUpdate"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="content">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.content' | translate}}</span>
+                                <p-sortIcon field="content"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.content" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="folder">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.folder' | translate}}</span>
+                                <p-sortIcon field="folder"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="size">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.size' | translate}}</span>
+                                <p-sortIcon field="size"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="documentType">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.documentType' | translate}}</span>
+                                <p-sortIcon field="documentType"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="documentState">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.documentState' | translate}}</span>
+                                <p-sortIcon field="documentState"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="documentCategorie">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.documentCategorie' | translate}}</span>
+                                <p-sortIcon field="documentCategorie"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                <!-- 
+                        <th pSortableColumn="proprietaire">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.proprietaire' | translate}}</span>
+                                <p-sortIcon field="proprietaire"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="archive">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.archive' | translate}}</span>
+                                <p-sortIcon field="archive"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="versionne">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.versionne' | translate}}</span>
+                                <p-sortIcon field="versionne"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="entiteAdministrative">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.entiteAdministrative' | translate}}</span>
+                                <p-sortIcon field="entiteAdministrative"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="entiteAdministrativeProprietaire">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'document.entiteAdministrativeProprietaire' | translate}}</span>
+                                <p-sortIcon field="entiteAdministrativeProprietaire"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-element>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="element"></p-tableCheckbox>
+                        </td>
+                            
+                        <td>{{element.reference}}</td>
+                            
+                            
+                        <td>{{element.uploadDate | date :'dd/MM/yyyy HH:mm' }}</td>
+                            
+                            
+                        <td>{{element.dateLastUpdate | date :'dd/MM/yyyy HH:mm' }}</td>
+                            
+                            
+                        <td>{{element.content}}</td>
+                            
+                            
+                        <td><i *ngIf="element.folder" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.folder" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                            
+                            
+                        <td>{{element.size}}</td>
+                            
+                            
+                        <td>{{element.documentType?.libelle}}</td>
+                            
+                            
+                        <td>{{element.documentState?.libelle}}</td>
+                            
+                            
+                        <td>{{element.documentCategorie?.libelle}}</td>
+                            
+                             <!-- 
+                        <td>{{element.proprietaire?.id}}</td>
+                             --> 
+                             <!-- 
+                        <td><i *ngIf="element.archive" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.archive" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                             --> 
+                             <!-- 
+                        <td><i *ngIf="element.versionne" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.versionne" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                             --> 
+                             <!-- 
+                        <td>{{element.entiteAdministrative?.libelle}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.entiteAdministrativeProprietaire?.libelle}}</td>
+                             --> 
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-info mr-2" (click)="edit(element)"  *ngIf="editActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-secondary mr-2" (click)="view(element)"  *ngIf="viewActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2" (click)="delete(element)"  *ngIf="deleteActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning mr-2" (click)="duplicate(element)"  *ngIf="duplicateActionIsValid"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="summary">
+                    <p-paginator  [rows]="10" [totalRecords]="totalRecords" (onPageChange)="onPage($event)"></p-paginator>
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale il {{items ? totalRecords == 1 ? 'y a' : 'y a' : 'y a' }} {{items ? totalRecords : 0 }} {{items ? totalRecords == 1 ? 'document' : 'documents' : 0 }}.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-document-create-utilisateur  *ngIf="createDialog  && createActionIsValid"></app-document-create-utilisateur>
+        <app-document-edit-utilisateur  *ngIf="editDialog  && editActionIsValid"></app-document-edit-utilisateur>
+        <app-document-view-utilisateur  *ngIf="viewDialog  && viewActionIsValid"></app-document-view-utilisateur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+
+<p-card header="Permission not allowed" *ngIf="!listActionIsValid">
+    <p class="m-0">
+        You don't have permission to access !
+    </p>
+</p-card>

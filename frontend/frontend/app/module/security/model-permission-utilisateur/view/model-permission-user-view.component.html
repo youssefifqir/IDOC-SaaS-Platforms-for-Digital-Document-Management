@@ -1,0 +1,48 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'modelPermissionUser.tabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'modelPermissionUser.tabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'modelPermissionUser.actionPermission' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'modelPermissionUser.actionPermission' | translate}}" autofocus  id="1" [(ngModel)]="item.actionPermission.reference">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'modelPermissionUser.modelPermission' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'modelPermissionUser.modelPermission' | translate}}" autofocus  id="2" [(ngModel)]="item.modelPermission.reference">
+                    </div>
+                    <div class="field align-inputswitch col-12  md:col-6">
+                        <div  class="label-inputswitch">
+                            <label for="3">{{'modelPermissionUser.value' | translate}}</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="3"  [disabled]="true" [(ngModel)]="item.value"></p-inputSwitch>
+                        </div>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'modelPermissionUser.user' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'modelPermissionUser.user' | translate}}" autofocus  id="4" [(ngModel)]="item.user.email">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'modelPermissionUser.subAttribute' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'modelPermissionUser.subAttribute' | translate}}" autofocus  id="5" [(ngModel)]="item.subAttribute">
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

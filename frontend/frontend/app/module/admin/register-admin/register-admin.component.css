@@ -1,0 +1,395 @@
+/* Centrage du formulaire
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Assure que le conteneur occupe toute la hauteur de la fenêtre
+    background-color: #f5f5f5; /* Couleur de fond pour donner un peu de contraste
+}
+
+.card.login-panel {
+    width: 100%;
+    max-width: 800px; /* Limite la largeur maximale de la carte
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+
+}*/
+
+.photo{
+
+}
+
+
+
+
+
+
+.sas{
+    color: #ffffff;
+    background: #f59e0b;
+    border: 1px solid #f59e0b;
+
+}
+
+
+.flex{
+    display: flex;
+}
+
+
+
+
+
+/* Centrage du formulaire */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Assure que le conteneur occupe toute la hauteur de la fenêtre */
+    background-color:#FDFBF6; /* Add your image path here */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-size: cover; /* Ensure the image covers the entire element */
+}
+
+.card.login-panel {
+    width: 100%;
+    max-width: 800px; /* Limite la largeur maximale de la carte */
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: #000000;
+    border: 1px solid #080808;
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Réduction de la taille des champs de saisie */
+.login-input input {
+    width: 100%;
+    padding: 0.5rem; /* Réduit la taille du padding */
+    font-size: 0.9rem; /* Réduit la taille de la police */
+    box-sizing: border-box; /* Assure que le padding est inclus dans la largeur totale */
+}
+
+label {
+    font-size: 0.9rem; /* Réduit la taille de la police pour les labels */
+    color:white;
+}
+
+/* Centrage des boutons */
+button {
+    width: 100%; /* Assure que le bouton prend toute la largeur disponible */
+    padding: 0.5rem;
+    font-size: 1rem; /* Ajuste la taille de la police pour le bouton */
+}
+
+/* Centrage des éléments */
+.grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid .col-12 {
+    width: 100%;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+
+
+
+
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.card.login-panel {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border: 5px solid yellow;
+}
+
+.login-input input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+label {
+    font-size: 0.9rem;
+}
+
+button {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid .col-12 {
+    width: 100%;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Réduction de la taille des champs de saisie */
+.login-input input {
+    width: 100%;
+    padding: 0.5rem; /* Réduit la taille du padding */
+    font-size: 0.9rem; /* Réduit la taille de la police */
+    box-sizing: border-box; /* Assure que le padding est inclus dans la largeur totale */
+}
+
+label {
+    font-size: 0.9rem; /* Réduit la taille de la police pour les labels */
+}
+
+/* Centrage des boutons */
+button {
+    width: 100%; /* Assure que le bouton prend toute la largeur disponible */
+    padding: 0.5rem;
+    font-size: 1rem; /* Ajuste la taille de la police pour le bouton */
+}
+
+/* Centrage des éléments */
+.grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid .col-12 {
+    width: 100%;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+
+
+
+
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.card.login-panel {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+}
+
+.login-input input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+label {
+    font-size: 0.9rem;
+}
+
+button {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid .col-12 {
+    width: 100%;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

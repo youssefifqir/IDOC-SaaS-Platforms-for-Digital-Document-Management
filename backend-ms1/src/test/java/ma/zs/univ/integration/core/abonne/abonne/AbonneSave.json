@@ -1,0 +1,20 @@
+{
+    "description": "description-1",
+    "entiteAdministrative": {"id": "1"},
+    "credentialsNonExpired": "true",
+    "enabled": "true",
+    "accountNonExpired": "true",
+    "accountNonLocked": "true",
+    "passwordChanged": "true",
+    "username": "username-1",
+    "password": "password-1"
+
+}
+
+
+
+
+
+
+
+

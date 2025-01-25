@@ -1,0 +1,11 @@
+<svg width="168" height="48" viewBox="0 0 168 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <text x="77" y="34" font-family="Helvetica" font-size="24" font-weight="bold" fill="#FBC01D">IDOC</text>
+  <g transform="translate(10, 10)">
+    <rect x="0" y="0" width="20" height="30" fill="#FBC01D" />
+    <circle cx="10" cy="25" r="3" fill="#ffffff" />
+    <rect x="22" y="0" width="20" height="30" fill="#F67B53" />
+    <circle cx="32" cy="25" r="3" fill="#ffffff" />
+    <rect x="44" y="0" width="20" height="30" fill="#FFB550" />
+    <circle cx="54" cy="25" r="3" fill="#ffffff" />
+  </g>
+</svg>

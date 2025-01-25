@@ -1,0 +1,117 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="document">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+        <column name="reference" type="VARCHAR(500)"/>
+        <column name="upload_date" type="TIMESTAMP"/>
+        <column name="date_last_update" type="TIMESTAMP"/>
+        <column name="content" type="VARCHAR(500)"/>
+        <column name="folder" type="TINYINT"/>
+        <column name="size" type="NUMERIC"/>
+        <column name="description" type="VARCHAR(500)"/>
+        <column name="archive" type="TINYINT"/>
+        <column name="versionne" type="TINYINT"/>
+
+        <column name="document_type_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="document_state_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="document_categorie_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="proprietaire_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="entite_administrative_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="entite_administrative_proprietaire_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="document"
+              baseColumnNames="document_type_id"
+              referencedTableName="document_type"
+              referencedColumnNames="id"
+              constraintName="fk_document_document_type"/>
+      <addForeignKeyConstraint
+              baseTableName="document"
+              baseColumnNames="document_state_id"
+              referencedTableName="document_state"
+              referencedColumnNames="id"
+              constraintName="fk_document_document_state"/>
+      <addForeignKeyConstraint
+              baseTableName="document"
+              baseColumnNames="document_categorie_id"
+              referencedTableName="document_categorie"
+              referencedColumnNames="id"
+              constraintName="fk_document_document_categorie"/>
+      <addForeignKeyConstraint
+              baseTableName="document"
+              baseColumnNames="proprietaire_id"
+              referencedTableName="proprietaire"
+              referencedColumnNames="id"
+              constraintName="fk_document_proprietaire"/>
+      <addForeignKeyConstraint
+              baseTableName="document"
+              baseColumnNames="entite_administrative_id"
+              referencedTableName="entite_administrative"
+              referencedColumnNames="id"
+              constraintName="fk_document_entite_administrative"/>
+      <addForeignKeyConstraint
+              baseTableName="document"
+              baseColumnNames="entite_administrative_proprietaire_id"
+              referencedTableName="entite_administrative_proprietaire"
+              referencedColumnNames="id"
+              constraintName="fk_document_entite_administrative_proprietaire"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="document_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/doc/Document.csv"
+            tableName="document">
+      <column name="id" type="NUMERIC"/>
+          <column name="reference" type="STRING"/>
+          <column name="upload_date" type="TIMESTAMP"/>
+          <column name="date_last_update" type="TIMESTAMP"/>
+          <column name="content" type="STRING"/>
+          <column name="folder" type="BOOLEAN"/>
+          <column name="size" type="NUMERIC"/>
+          <column name="description" type="STRING"/>
+          <column name="archive" type="BOOLEAN"/>
+          <column name="versionne" type="BOOLEAN"/>
+        <column name="document_type" type="BIGINT"/>
+        <column name="document_state" type="BIGINT"/>
+        <column name="document_categorie" type="BIGINT"/>
+        <column name="proprietaire" type="BIGINT"/>
+        <column name="entite_administrative" type="BIGINT"/>
+        <column name="entite_administrative_proprietaire" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>

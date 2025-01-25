@@ -1,0 +1,112 @@
+.login-body {
+    padding: 0;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    height: 100vh;
+    background: url("src/assets/layout/images/image_register.jpg") no-repeat;
+    background-size: cover;
+}
+.login-body .login-panel {
+    padding: 0 70px 20px 70px;
+    height: 100%;
+    width: 556px;
+    position: absolute;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+.login-body .login-panel .login-panel-content {
+    margin-top: 33.3%;
+}
+.login-body .login-panel .logo-container {
+    text-align: left;
+}
+.login-body .login-panel .logo-container img {
+    display: block;
+    margin-bottom: 25px;
+}
+.login-body .login-panel .username-container, .login-body .login-panel .password-container {
+    text-align: left;
+}
+.login-body .login-panel h1 {
+    display: inline-block;
+    font-size: 16px;
+    background-color: #feedbc;
+    margin: 0 0 16px 0;
+    color: #666666;
+    padding: 4px 8px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+.login-body .login-panel .guest-sign-in {
+    color: #303030;
+}
+.login-body .login-panel label {
+    display: block;
+    color: #252529;
+    margin: 0.5em 0 0.5em 0;
+}
+.login-body .login-panel input {
+    background: #ffffff;
+    border: 1px solid #65656a;
+
+
+}
+.login-body .login-panel .forgetpassword-container {
+    padding-top: 1em;
+    text-align: right;
+}
+.login-body .login-panel .rememberme-container {
+    padding-top: 1em;
+}
+.login-body .login-panel .rememberme-container label {
+    display: inline;
+    vertical-align: middle;
+}
+.login-body .login-panel button {
+    margin-top: 0.5em;
+    display: block;
+    min-width: 120px;
+}
+.login-body .login-panel a {
+    color: #1cb9d7;
+}
+.login-body .login-panel .footer {
+    color: #65656a;
+    margin-top: 100%;
+}
+
+@media screen and (max-width: 40em) {
+    .login-body .login-image {
+        height: calc(100%);
+        width: calc(100%);
+        transform: scale(1.5);
+        background-position-x: -290px;
+        background-position-y: -160px;
+    }
+    .login-body .login-panel {
+        left: 0;
+        bottom: 0%;
+        width: 100%;
+        margin-bottom: 0px;
+        margin-top: 0;
+        margin-left: 0;
+        padding: 0 27px 20px 28px;
+        height: calc(100% - 128px);
+    }
+    .login-body .login-panel .login-panel-content {
+        margin-top: 30px;
+    }
+    .login-body .login-panel input {
+        width: 100%;
+    }
+    .login-body .login-panel .footer {
+        font-size: 11px;
+        padding-right: 11px;
+        margin-top: 60px;
+    }
+}

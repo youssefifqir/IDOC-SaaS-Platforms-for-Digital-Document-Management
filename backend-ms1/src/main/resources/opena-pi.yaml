@@ -1,0 +1,1583 @@
+openapi: 3.0.3
+info:
+  title: Title
+  description: Title
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  /documentFields:
+    get:
+      summary: List all documentFields
+      operationId: listDocumentFields
+      tags:
+        - documentFields
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of documentFields
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/DocumentFields'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a documentField
+      operationId: createDocumentFields
+      tags:
+        - documentFields
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentFields/{documentFieldId}:
+    get:
+      summary: Info for a specific documentField
+      operationId: showDocumentFieldById
+      tags:
+        - documentFields
+      parameters:
+        - name: documentFieldId
+          in: path
+          required: true
+          description: The id of the documentField to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/DocumentFields'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /fields:
+    get:
+      summary: List all fields
+      operationId: listFields
+      tags:
+        - fields
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of fields
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Fields'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a field
+      operationId: createFields
+      tags:
+        - fields
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /fields/{fieldId}:
+    get:
+      summary: Info for a specific field
+      operationId: showFieldById
+      tags:
+        - fields
+      parameters:
+        - name: fieldId
+          in: path
+          required: true
+          description: The id of the field to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Fields'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentPartageUtilisateurs:
+    get:
+      summary: List all documentPartageUtilisateurs
+      operationId: listDocumentPartageUtilisateurs
+      tags:
+        - documentPartageUtilisateurs
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of documentPartageUtilisateurs
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/DocumentPartageUtilisateurs'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a documentPartageUtilisateur
+      operationId: createDocumentPartageUtilisateurs
+      tags:
+        - documentPartageUtilisateurs
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentPartageUtilisateurs/{documentPartageUtilisateurId}:
+    get:
+      summary: Info for a specific documentPartageUtilisateur
+      operationId: showDocumentPartageUtilisateurById
+      tags:
+        - documentPartageUtilisateurs
+      parameters:
+        - name: documentPartageUtilisateurId
+          in: path
+          required: true
+          description: The id of the documentPartageUtilisateur to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/DocumentPartageUtilisateurs'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /entiteAdministrativeTypes:
+    get:
+      summary: List all entiteAdministrativeTypes
+      operationId: listEntiteAdministrativeTypes
+      tags:
+        - entiteAdministrativeTypes
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of entiteAdministrativeTypes
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/EntiteAdministrativeTypes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a entiteAdministrativeType
+      operationId: createEntiteAdministrativeTypes
+      tags:
+        - entiteAdministrativeTypes
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /entiteAdministrativeTypes/{entiteAdministrativeTypeId}:
+    get:
+      summary: Info for a specific entiteAdministrativeType
+      operationId: showEntiteAdministrativeTypeById
+      tags:
+        - entiteAdministrativeTypes
+      parameters:
+        - name: entiteAdministrativeTypeId
+          in: path
+          required: true
+          description: The id of the entiteAdministrativeType to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/EntiteAdministrativeTypes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /acessShares:
+    get:
+      summary: List all acessShares
+      operationId: listAcessShares
+      tags:
+        - acessShares
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of acessShares
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/AcessShares'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a acessShare
+      operationId: createAcessShares
+      tags:
+        - acessShares
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /acessShares/{acessShareId}:
+    get:
+      summary: Info for a specific acessShare
+      operationId: showAcessShareById
+      tags:
+        - acessShares
+      parameters:
+        - name: acessShareId
+          in: path
+          required: true
+          description: The id of the acessShare to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/AcessShares'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentTags:
+    get:
+      summary: List all documentTags
+      operationId: listDocumentTags
+      tags:
+        - documentTags
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of documentTags
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/DocumentTags'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a documentTag
+      operationId: createDocumentTags
+      tags:
+        - documentTags
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentTags/{documentTagId}:
+    get:
+      summary: Info for a specific documentTag
+      operationId: showDocumentTagById
+      tags:
+        - documentTags
+      parameters:
+        - name: documentTagId
+          in: path
+          required: true
+          description: The id of the documentTag to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/DocumentTags'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentStates:
+    get:
+      summary: List all documentStates
+      operationId: listDocumentStates
+      tags:
+        - documentStates
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of documentStates
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/DocumentStates'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a documentState
+      operationId: createDocumentStates
+      tags:
+        - documentStates
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentStates/{documentStateId}:
+    get:
+      summary: Info for a specific documentState
+      operationId: showDocumentStateById
+      tags:
+        - documentStates
+      parameters:
+        - name: documentStateId
+          in: path
+          required: true
+          description: The id of the documentState to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/DocumentStates'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentPartageGroupes:
+    get:
+      summary: List all documentPartageGroupes
+      operationId: listDocumentPartageGroupes
+      tags:
+        - documentPartageGroupes
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of documentPartageGroupes
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/DocumentPartageGroupes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a documentPartageGroupe
+      operationId: createDocumentPartageGroupes
+      tags:
+        - documentPartageGroupes
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentPartageGroupes/{documentPartageGroupeId}:
+    get:
+      summary: Info for a specific documentPartageGroupe
+      operationId: showDocumentPartageGroupeById
+      tags:
+        - documentPartageGroupes
+      parameters:
+        - name: documentPartageGroupeId
+          in: path
+          required: true
+          description: The id of the documentPartageGroupe to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/DocumentPartageGroupes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documents:
+    get:
+      summary: List all documents
+      operationId: listDocuments
+      tags:
+        - documents
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of documents
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Documents'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a document
+      operationId: createDocuments
+      tags:
+        - documents
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documents/{documentId}:
+    get:
+      summary: Info for a specific document
+      operationId: showDocumentById
+      tags:
+        - documents
+      parameters:
+        - name: documentId
+          in: path
+          required: true
+          description: The id of the document to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Documents'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentCategories:
+    get:
+      summary: List all documentCategories
+      operationId: listDocumentCategories
+      tags:
+        - documentCategories
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of documentCategories
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/DocumentCategories'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a documentCategorie
+      operationId: createDocumentCategories
+      tags:
+        - documentCategories
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentCategories/{documentCategorieId}:
+    get:
+      summary: Info for a specific documentCategorie
+      operationId: showDocumentCategorieById
+      tags:
+        - documentCategories
+      parameters:
+        - name: documentCategorieId
+          in: path
+          required: true
+          description: The id of the documentCategorie to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/DocumentCategories'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /utilisateurs:
+    get:
+      summary: List all utilisateurs
+      operationId: listUtilisateurs
+      tags:
+        - utilisateurs
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of utilisateurs
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Utilisateurs'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a utilisateur
+      operationId: createUtilisateurs
+      tags:
+        - utilisateurs
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /utilisateurs/{utilisateurId}:
+    get:
+      summary: Info for a specific utilisateur
+      operationId: showUtilisateurById
+      tags:
+        - utilisateurs
+      parameters:
+        - name: utilisateurId
+          in: path
+          required: true
+          description: The id of the utilisateur to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Utilisateurs'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /entiteAdministratives:
+    get:
+      summary: List all entiteAdministratives
+      operationId: listEntiteAdministratives
+      tags:
+        - entiteAdministratives
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of entiteAdministratives
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/EntiteAdministratives'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a entiteAdministrative
+      operationId: createEntiteAdministratives
+      tags:
+        - entiteAdministratives
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /entiteAdministratives/{entiteAdministrativeId}:
+    get:
+      summary: Info for a specific entiteAdministrative
+      operationId: showEntiteAdministrativeById
+      tags:
+        - entiteAdministratives
+      parameters:
+        - name: entiteAdministrativeId
+          in: path
+          required: true
+          description: The id of the entiteAdministrative to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/EntiteAdministratives'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /tags:
+    get:
+      summary: List all tags
+      operationId: listTags
+      tags:
+        - tags
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of tags
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Tags'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a tag
+      operationId: createTags
+      tags:
+        - tags
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /tags/{tagId}:
+    get:
+      summary: Info for a specific tag
+      operationId: showTagById
+      tags:
+        - tags
+      parameters:
+        - name: tagId
+          in: path
+          required: true
+          description: The id of the tag to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Tags'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /acessManagements:
+    get:
+      summary: List all acessManagements
+      operationId: listAcessManagements
+      tags:
+        - acessManagements
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of acessManagements
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/AcessManagements'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a acessManagement
+      operationId: createAcessManagements
+      tags:
+        - acessManagements
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /acessManagements/{acessManagementId}:
+    get:
+      summary: Info for a specific acessManagement
+      operationId: showAcessManagementById
+      tags:
+        - acessManagements
+      parameters:
+        - name: acessManagementId
+          in: path
+          required: true
+          description: The id of the acessManagement to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/AcessManagements'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /abonnes:
+    get:
+      summary: List all abonnes
+      operationId: listAbonnes
+      tags:
+        - abonnes
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of abonnes
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Abonnes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a abonne
+      operationId: createAbonnes
+      tags:
+        - abonnes
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /abonnes/{abonneId}:
+    get:
+      summary: Info for a specific abonne
+      operationId: showAbonneById
+      tags:
+        - abonnes
+      parameters:
+        - name: abonneId
+          in: path
+          required: true
+          description: The id of the abonne to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Abonnes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentTypes:
+    get:
+      summary: List all documentTypes
+      operationId: listDocumentTypes
+      tags:
+        - documentTypes
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of documentTypes
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/DocumentTypes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a documentType
+      operationId: createDocumentTypes
+      tags:
+        - documentTypes
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentTypes/{documentTypeId}:
+    get:
+      summary: Info for a specific documentType
+      operationId: showDocumentTypeById
+      tags:
+        - documentTypes
+      parameters:
+        - name: documentTypeId
+          in: path
+          required: true
+          description: The id of the documentType to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/DocumentTypes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentFieldStates:
+    get:
+      summary: List all documentFieldStates
+      operationId: listDocumentFieldStates
+      tags:
+        - documentFieldStates
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of documentFieldStates
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/DocumentFieldStates'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a documentFieldState
+      operationId: createDocumentFieldStates
+      tags:
+        - documentFieldStates
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentFieldStates/{documentFieldStateId}:
+    get:
+      summary: Info for a specific documentFieldState
+      operationId: showDocumentFieldStateById
+      tags:
+        - documentFieldStates
+      parameters:
+        - name: documentFieldStateId
+          in: path
+          required: true
+          description: The id of the documentFieldState to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/DocumentFieldStates'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentAcessShares:
+    get:
+      summary: List all documentAcessShares
+      operationId: listDocumentAcessShares
+      tags:
+        - documentAcessShares
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of documentAcessShares
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/DocumentAcessShares'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a documentAcessShare
+      operationId: createDocumentAcessShares
+      tags:
+        - documentAcessShares
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documentAcessShares/{documentAcessShareId}:
+    get:
+      summary: Info for a specific documentAcessShare
+      operationId: showDocumentAcessShareById
+      tags:
+        - documentAcessShares
+      parameters:
+        - name: documentAcessShareId
+          in: path
+          required: true
+          description: The id of the documentAcessShare to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/DocumentAcessShares'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /groupeUtilisateurs:
+    get:
+      summary: List all groupeUtilisateurs
+      operationId: listGroupeUtilisateurs
+      tags:
+        - groupeUtilisateurs
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of groupeUtilisateurs
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/GroupeUtilisateurs'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a groupeUtilisateur
+      operationId: createGroupeUtilisateurs
+      tags:
+        - groupeUtilisateurs
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /groupeUtilisateurs/{groupeUtilisateurId}:
+    get:
+      summary: Info for a specific groupeUtilisateur
+      operationId: showGroupeUtilisateurById
+      tags:
+        - groupeUtilisateurs
+      parameters:
+        - name: groupeUtilisateurId
+          in: path
+          required: true
+          description: The id of the groupeUtilisateur to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/GroupeUtilisateurs'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /groupes:
+    get:
+      summary: List all groupes
+      operationId: listGroupes
+      tags:
+        - groupes
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of groupes
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Groupes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a groupe
+      operationId: createGroupes
+      tags:
+        - groupes
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /groupes/{groupeId}:
+    get:
+      summary: Info for a specific groupe
+      operationId: showGroupeById
+      tags:
+        - groupes
+      parameters:
+        - name: groupeId
+          in: path
+          required: true
+          description: The id of the groupe to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Groupes'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  
+
+
+definitions:
+  DocumentField:
+    type: "object"
+    required:
+      - id
+      - value
+    properties:
+      id:
+        type: int
+      value:
+        type: string
+  DocumentFields:
+    type: array
+    items:
+      $ref: '#/definitions/DocumentField'
+  Field:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  Fields:
+    type: array
+    items:
+      $ref: '#/definitions/Field'
+  DocumentPartageUtilisateur:
+    type: "object"
+    required:
+      - id
+      - dateShare
+    properties:
+      id:
+        type: int
+      dateShare:
+        type: date
+  DocumentPartageUtilisateurs:
+    type: array
+    items:
+      $ref: '#/definitions/DocumentPartageUtilisateur'
+  EntiteAdministrativeType:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  EntiteAdministrativeTypes:
+    type: array
+    items:
+      $ref: '#/definitions/EntiteAdministrativeType'
+  AcessShare:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  AcessShares:
+    type: array
+    items:
+      $ref: '#/definitions/AcessShare'
+  DocumentTag:
+    type: "object"
+    required:
+      - id
+    properties:
+      id:
+        type: int
+  DocumentTags:
+    type: array
+    items:
+      $ref: '#/definitions/DocumentTag'
+  DocumentState:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+      - style
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+      style:
+        type: string
+  DocumentStates:
+    type: array
+    items:
+      $ref: '#/definitions/DocumentState'
+  DocumentPartageGroupe:
+    type: "object"
+    required:
+      - id
+      - dateShare
+    properties:
+      id:
+        type: int
+      dateShare:
+        type: date
+  DocumentPartageGroupes:
+    type: array
+    items:
+      $ref: '#/definitions/DocumentPartageGroupe'
+  Document:
+    type: "object"
+    required:
+      - id
+      - reference
+      - uploadDate
+      - dateLastUpdate
+      - content
+      - folder
+      - size
+      - description
+      - archive
+      - versionne
+    properties:
+      id:
+        type: int
+      reference:
+        type: string
+      uploadDate:
+        type: date
+      dateLastUpdate:
+        type: date
+      content:
+        type: string
+      folder:
+        type: boolean
+      size:
+        type: number
+      description:
+        type: string
+      archive:
+        type: boolean
+      versionne:
+        type: boolean
+  Documents:
+    type: array
+    items:
+      $ref: '#/definitions/Document'
+  DocumentCategorie:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  DocumentCategories:
+    type: array
+    items:
+      $ref: '#/definitions/DocumentCategorie'
+  Utilisateur:
+    type: "object"
+    required:
+      - id
+      - description
+      - credentialsNonExpired
+      - enabled
+      - accountNonExpired
+      - accountNonLocked
+      - passwordChanged
+      - username
+      - password
+    properties:
+      id:
+        type: int
+      description:
+        type: string
+      credentialsNonExpired:
+        type: boolean
+      enabled:
+        type: boolean
+      accountNonExpired:
+        type: boolean
+      accountNonLocked:
+        type: boolean
+      passwordChanged:
+        type: boolean
+      username:
+        type: string
+      password:
+        type: string
+  Utilisateurs:
+    type: array
+    items:
+      $ref: '#/definitions/Utilisateur'
+  EntiteAdministrative:
+    type: "object"
+    required:
+      - id
+      - code
+      - description
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      description:
+        type: string
+      libelle:
+        type: string
+  EntiteAdministratives:
+    type: array
+    items:
+      $ref: '#/definitions/EntiteAdministrative'
+  Tag:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  Tags:
+    type: array
+    items:
+      $ref: '#/definitions/Tag'
+  AcessManagement:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  AcessManagements:
+    type: array
+    items:
+      $ref: '#/definitions/AcessManagement'
+  Abonne:
+    type: "object"
+    required:
+      - id
+      - description
+      - credentialsNonExpired
+      - enabled
+      - accountNonExpired
+      - accountNonLocked
+      - passwordChanged
+      - username
+      - password
+    properties:
+      id:
+        type: int
+      description:
+        type: string
+      credentialsNonExpired:
+        type: boolean
+      enabled:
+        type: boolean
+      accountNonExpired:
+        type: boolean
+      accountNonLocked:
+        type: boolean
+      passwordChanged:
+        type: boolean
+      username:
+        type: string
+      password:
+        type: string
+  Abonnes:
+    type: array
+    items:
+      $ref: '#/definitions/Abonne'
+  DocumentType:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  DocumentTypes:
+    type: array
+    items:
+      $ref: '#/definitions/DocumentType'
+  DocumentFieldState:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+      - style
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+      style:
+        type: string
+  DocumentFieldStates:
+    type: array
+    items:
+      $ref: '#/definitions/DocumentFieldState'
+  DocumentAcessShare:
+    type: "object"
+    required:
+      - id
+    properties:
+      id:
+        type: int
+  DocumentAcessShares:
+    type: array
+    items:
+      $ref: '#/definitions/DocumentAcessShare'
+  GroupeUtilisateur:
+    type: "object"
+    required:
+      - id
+    properties:
+      id:
+        type: int
+  GroupeUtilisateurs:
+    type: array
+    items:
+      $ref: '#/definitions/GroupeUtilisateur'
+  Groupe:
+    type: "object"
+    required:
+      - id
+      - code
+      - libelle
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      libelle:
+        type: string
+  Groupes:
+    type: array
+    items:
+      $ref: '#/definitions/Groupe'
+
+  Error:
+    type: "object"
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string

@@ -1,0 +1,59 @@
+<!-- db/changelog-1.1-container.xml -->
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+  <!-- Create Container Table -->
+    <changeSet id="1" author="your-name">
+    <createTable tableName="document_tag">
+      <column name="id" type="BIGINT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+
+        <column name="document_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="tag_id" type="BIGINT">
+          <constraints nullable="false"/>
+        </column>
+
+    </createTable>
+  </changeSet>
+
+    <!-- Add foreign key constraint -->
+  <changeSet id="2" author="your-name">
+      <addForeignKeyConstraint
+              baseTableName="document_tag"
+              baseColumnNames="document_id"
+              referencedTableName="document"
+              referencedColumnNames="id"
+              constraintName="fk_document_tag_document"/>
+      <addForeignKeyConstraint
+              baseTableName="document_tag"
+              baseColumnNames="tag_id"
+              referencedTableName="tag"
+              referencedColumnNames="id"
+              constraintName="fk_document_tag_tag"/>
+
+  </changeSet>
+
+    <!-- Create Sequence for ContainerType -->
+  <changeSet id="3" author="your-name">
+    <createSequence sequenceName="document_tag_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <!-- Load Data from CSV -->
+  <changeSet id="4" author="your-name">
+    <loadData
+            file="classpath:/db/migration/data/doc/DocumentTag.csv"
+            tableName="document_tag">
+      <column name="id" type="NUMERIC"/>
+        <column name="document" type="BIGINT"/>
+        <column name="tag" type="BIGINT"/>
+    </loadData>
+  </changeSet>
+
+
+</databaseChangeLog>

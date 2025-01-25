@@ -1,0 +1,168 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'document.tabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'document.tabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'document.reference' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'document.reference' | translate}}" autofocus  id="1" [ngModel]="item.reference">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'document.uploadDate' | translate}}</label>
+                        <p-calendar id="2" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'document.uploadDate' | translate}}"  [ngModel]="item.uploadDate" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'document.dateLastUpdate' | translate}}</label>
+                        <p-calendar id="3" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'document.dateLastUpdate' | translate}}"  [ngModel]="item.dateLastUpdate" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'document.content' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'document.content' | translate}}" autofocus  id="4" [ngModel]="item.content">
+                    </div>
+                    <div class="field align-inputswitch col-12  md:col-6">
+                        <div  class="label-inputswitch">
+                            <label for="5">{{'document.folder' | translate}}</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="5"  [disabled]="true" [ngModel]="item.folder"></p-inputSwitch>
+                        </div>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="6">{{'document.size' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="6" [disabled]="true" placeholder="{{'document.size' | translate}}" [ngModel]="item.size"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'document.documentType' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'document.documentType' | translate}}" autofocus  id="7" [ngModel]="item.documentType?.libelle">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="8">{{'document.documentState' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'document.documentState' | translate}}" autofocus  id="8" [ngModel]="item.documentState?.libelle">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="9">{{'document.documentCategorie' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'document.documentCategorie' | translate}}" autofocus  id="9" [ngModel]="item.documentCategorie?.libelle">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="11">{{'document.description' | translate}}</label>
+                        <textarea id="11" pInputTextarea rows="5" cols="30" [disabled]="true" placeholder="{{'document.description' | translate}}"  [ngModel]="item.description"></textarea>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="12">{{'document.proprietaire' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'document.proprietaire' | translate}}" autofocus  id="12" [ngModel]="item.proprietaire?.id">
+                    </div>
+                    <div class="field align-inputswitch col-12  md:col-6">
+                        <div  class="label-inputswitch">
+                            <label for="13">{{'document.archive' | translate}}</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="13"  [disabled]="true" [ngModel]="item.archive"></p-inputSwitch>
+                        </div>
+                    </div>
+                    <div class="field align-inputswitch col-12  md:col-6">
+                        <div  class="label-inputswitch">
+                            <label for="14">{{'document.versionne' | translate}}</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="14"  [disabled]="true" [ngModel]="item.versionne"></p-inputSwitch>
+                        </div>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="15">{{'document.entiteAdministrative' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'document.entiteAdministrative' | translate}}" autofocus  id="15" [ngModel]="item.entiteAdministrative?.libelle">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="16">{{'document.entiteAdministrativeProprietaire' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'document.entiteAdministrativeProprietaire' | translate}}" autofocus  id="16" [ngModel]="item.entiteAdministrativeProprietaire?.libelle">
+                    </div>
+                </div>
+            </p-tabPanel>
+
+            <p-tabPanel header="{{'document.documentFields' | translate}}">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="item.documentFields" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Value</th>
+                                        <th>Document field state</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.field?.libelle}}</td>
+                                        <td>{{p.value}}</td>
+                                        <td>{{p.documentFieldState?.libelle}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="{{'document.documentPartageGroupes' | translate}}">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="item.documentPartageGroupes" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Groupe</th>
+                                        <th>Date share</th>
+                                        <th>Acess share</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.groupe?.libelle}}</td>
+                                        <td>{{p.dateShare | date: dateFormatColumn}}</td>
+                                        <td>{{p.acessShare?.libelle}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="{{'document.documentPartageUtilisateurs' | translate}}">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="item.documentPartageUtilisateurs" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Utilisateur</th>
+                                        <th>Date share</th>
+                                        <th>Acess share</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.utilisateur?.id}}</td>
+                                        <td>{{p.dateShare | date: dateFormatColumn}}</td>
+                                        <td>{{p.acessShare?.libelle}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-flexbox">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

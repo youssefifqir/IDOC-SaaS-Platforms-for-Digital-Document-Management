@@ -1,0 +1,25 @@
+{
+    "code": "#string",
+    "libelle": "#string",
+    "utilisateur": {"id": "#number"},
+
+    "groupeUtilisateurs": [
+      {
+        "utilisateur":{"id": "#number"}}
+      },
+      {
+        "utilisateur":{"id": "#number"}}
+      },
+      {
+        "utilisateur":{"id": "#number"}}
+      }
+    ]
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,209 @@
+<div class="grid" *ngIf="listActionIsValid">
+    <div class="col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label=" {{'new' | translate}}" icon="pi pi-plus" class="p-button-info mr-2 mb-2" (click)="openCreate('User')" *ngIf="createActionIsValid"></button>
+                    <button [disabled]="isSelectionDisabled()" pButton pRipple label=" {{'delete' | translate}}" icon="pi pi-trash" class="p-button-danger mr-2 mb-2" (click)=deleteMultiple()  *ngIf="deleteActionIsValid"></button>
+                    <button pButton pRipple label=" {{'search' | translate}}" icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}" class="p-button-secondary mr-2 mb-2" (click)="this.showSearch()"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label=" {{'export' | translate}}" icon="pi pi-download" styleClass="p-button-secondary" [model]="excelPdfButons"></p-splitButton>                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="col-12">
+                    <div class="flex flex-wrap p-fluid col-12">
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="1">{{'user.credentialsNonExpired' | translate}}</label>
+                            <p-dropdown  id="1" [options]="yesOrNoCredentialsNonExpired" [(ngModel)]="criteria.credentialsNonExpired"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'user.credentialsNonExpired' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="2">{{'user.enabled' | translate}}</label>
+                            <p-dropdown  id="2" [options]="yesOrNoEnabled" [(ngModel)]="criteria.enabled"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'user.enabled' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="3">{{'user.email' | translate}}</label>
+                            <input  class="w-full"  pInputText id="3" type="text"  [(ngModel)]="criteria.emailLike">
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="4">{{'user.accountNonExpired' | translate}}</label>
+                            <p-dropdown  id="4" [options]="yesOrNoAccountNonExpired" [(ngModel)]="criteria.accountNonExpired"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'user.accountNonExpired' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="5">{{'user.accountNonLocked' | translate}}</label>
+                            <p-dropdown  id="5" [options]="yesOrNoAccountNonLocked" [(ngModel)]="criteria.accountNonLocked"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'user.accountNonLocked' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="6">{{'user.username' | translate}}</label>
+                            <input  class="w-full"  pInputText id="6" type="text"  [(ngModel)]="criteria.usernameLike">
+                        </div>
+                       <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="7">{{'user.password' | translate}}</label>
+                            <input  class="w-full"  pInputText id="7" type="text"  [(ngModel)]="criteria.passwordLike">
+                        </div>
+                        <div class="lg:col-3 md:col-6 sm:col-12 mb-4">
+                            <label  class="font-bold block mb-2" for="8">{{'user.passwordChanged' | translate}}</label>
+                            <p-dropdown  id="8" [options]="yesOrNoPasswordChanged" [(ngModel)]="criteria.passwordChanged"  class="p-fluid"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'user.passwordChanged' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                    <div [style]="{ marginTop : '1rem', display: 'flex', justifyContent: 'flex-end' }">
+                        <button pButton pRipple label="{{'validate' | translate}}" icon="pi pi-sort-amount-down" class="p-button-info mr-2" (click)="findPaginatedByCriteria()"></button>
+                    </div>
+                </div>
+
+
+            </p-toolbar>
+
+
+            <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
+                    [globalFilterFields]="['credentialsNonExpired', 'enabled', 'email', 'accountNonExpired', 'accountNonLocked', 'username', 'password', 'passwordChanged']" [(selection)]="selections"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                    currentPageReportTemplate="{{'les éléments de {first} à {last} sur {totalRecords} ' | translate}}"
+                    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column flex-row justify-content-between table-header">
+                        <h5 class="p-m-0">{{'user.header' | translate}}</h5>
+                        <span class="p-input-icon-left ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="{{'searchInput' | translate}}" (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                        <th pSortableColumn="username">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'user.username' | translate}}</span>
+                                <p-sortIcon field="username"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.username" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="email">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'user.email' | translate}}</span>
+                                <p-sortIcon field="email"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.email" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+
+                        <th pSortableColumn="credentialsNonExpired">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'user.credentialsNonExpired' | translate}}</span>
+                                <p-sortIcon field="credentialsNonExpired"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="enabled">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'user.enabled' | translate}}</span>
+                                <p-sortIcon field="enabled"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+
+
+
+                        <th pSortableColumn="accountNonExpired">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'user.accountNonExpired' | translate}}</span>
+                                <p-sortIcon field="accountNonExpired"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="accountNonLocked">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'user.accountNonLocked' | translate}}</span>
+                                <p-sortIcon field="accountNonLocked"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <th pSortableColumn="passwordChanged">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'user.passwordChanged' | translate}}</span>
+                                <p-sortIcon field="passwordChanged"></p-sortIcon>
+                            </div>
+                        </th>
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-element>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="element"></p-tableCheckbox>
+                        </td>
+                        <td>{{element.username}}</td>
+                        <td>{{element.email}}</td>
+                        <td><i *ngIf="element.credentialsNonExpired" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.credentialsNonExpired" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+
+
+                        <td><i *ngIf="element.enabled" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.enabled" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+
+                        <td><i *ngIf="element.accountNonExpired" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.accountNonExpired" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+
+                        <td><i *ngIf="element.accountNonLocked" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.accountNonLocked" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                        <td><i *ngIf="element.passwordChanged" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.passwordChanged" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-info mr-2" (click)="edit(element)"  *ngIf="editActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-secondary mr-2" (click)="view(element)"  *ngIf="viewActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2" (click)="delete(element)"  *ngIf="deleteActionIsValid"></button>
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning mr-2" (click)="duplicate(element)"  *ngIf="duplicateActionIsValid"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="summary">
+                    <p-paginator  [rows]="10" [totalRecords]="totalRecords" (onPageChange)="onPage($event)"></p-paginator>
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale il {{items ? totalRecords == 1 ? 'y a' : 'y a' : 'y a' }} {{items ? totalRecords : 0 }} {{items ? totalRecords == 1 ? 'user' : 'users' : 0 }}.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-user-create  *ngIf="createDialog && createActionIsValid"></app-user-create>
+        <app-user-edit  *ngIf="editDialog && editActionIsValid"></app-user-edit>
+        <app-user-view  *ngIf="viewDialog && viewActionIsValid"></app-user-view>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+<p-card header="Permission not allowed" *ngIf="!listActionIsValid">
+    <p class="m-0">
+        You don't have permission to access !
+    </p>
+</p-card>

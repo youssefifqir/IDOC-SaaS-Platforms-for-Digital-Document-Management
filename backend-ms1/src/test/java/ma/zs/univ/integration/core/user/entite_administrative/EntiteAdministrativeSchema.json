@@ -1,0 +1,17 @@
+{
+    "code": "#string",
+    "description": "#string",
+    "libelle": "#string",
+    "chef": {"id": "#number"},
+    "entiteAdministrativeType": {"id": "#number"},
+    "abonne": {"id": "#number"}
+
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,297 @@
+
+/*.login-body {
+    padding: 0;
+    overflow: hidden;
+    margin: 100px auto;  Auto margin for centering horizontally
+    position: relative;
+    height: 100vh;
+    width: 100%;  Ensuring full width
+    max-width: 500px;  Example max-width
+    display: flex;
+    align-items: center;  Center vertically
+    justify-content: center;  Center horizontally
+    background-size: cover;
+
+}
+.login-body .login-panel {
+
+}
+.login-body .login-panel .login-panel-content {
+
+}
+.login-body .login-panel .logo-container {
+    text-align: left;
+}
+.login-body .login-panel .logo-container img {
+    display: block;
+    margin-bottom: 25px;
+}
+.login-body .login-panel .username-container, .login-body .login-panel .password-container {
+    text-align: left;
+}
+.login-body .login-panel h1 {
+    display: inline-block;
+    font-size: 16px;
+    background-color: #feedbc;
+    margin: 0 0 16px 0;
+    color: #666666;
+    padding: 4px 8px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+.login-body .login-panel .guest-sign-in {
+    color: #303030;
+}
+.login-body .login-panel label {
+    display: block;
+    color: #252529;
+    margin: 0.5em 0 0.5em 0;
+}
+.login-body .login-panel input {
+    background: #ffffff;
+    border: 1px solid blueviolet;
+
+
+}
+.login-body .login-panel .forgetpassword-container {
+    padding-top: 1em;
+    text-align: right;
+}
+.login-body .login-panel .rememberme-container {
+    padding-top: 1em;
+}
+.login-body .login-panel .rememberme-container label {
+    display: inline;
+    vertical-align: middle;
+}
+.login-body .login-panel button {
+    margin-top: 0.5em;
+    display: block;
+    min-width: 120px;
+}
+.login-body .login-panel a {
+    color: #1cb9d7;
+}
+.login-body .login-panel .footer {
+    color: #65656a;
+    margin-top: 100%;
+}
+
+@media screen and (max-width: 40em) {
+    .login-body .login-image {
+        height: calc(100%);
+        width: calc(100%);
+        transform: scale(1.5);
+        background-position-x: -290px;
+        background-position-y: -160px;
+    }
+    .login-body .login-panel {
+        left: 0;
+        bottom: 0%;
+        width: 100%;
+        margin-bottom: 0px;
+        margin-top: 0;
+        margin-left: 0;
+        padding: 0 27px 20px 28px;
+        height: calc(100% - 128px);
+    }
+    .login-body .login-panel .login-panel-content {
+        margin-top: 30px;
+    }
+    .login-body .login-panel input {
+        width: 100%;
+    }
+    .login-body .login-panel .footer {
+        font-size: 11px;
+        padding-right: 11px;
+        margin-top: 60px;
+    }
+}  */
+
+.imge{
+    background-color:#FDFBF6 ; /* Add your image path here */
+    /* Add your image path here */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-size: cover; /* Ensure the image covers the entire element */
+}
+
+
+
+
+
+.login-body {
+    padding: 0;
+    overflow: hidden;
+    margin: 0px auto; /* Auto margin for centering horizontally */
+    position: relative;
+    height: 100vh;
+    width: 100%; /* Ensuring full width */
+    max-width: 500px; /* Example max-width */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    /* Ensure the image covers the entire element */
+
+}
+
+.signinbtn {
+    color: #ffffff;
+    background: #f59e0b;
+    border: 1px solid #f59e0b;
+}
+
+
+.sign {
+    color: #ffffff;
+    background:#44403c;
+    border: 1px solid #44403c;
+}
+
+.tit{
+    color:white;
+}
+
+
+
+.user{
+    color:black;
+}
+
+
+
+
+
+
+.pass{
+    color:white;
+}
+
+
+.fa-solid fa-user-plus fa-2xl{
+
+    color:black;
+    margin-top: 10px;
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.login-body .login-panel {
+
+}
+.login-body .login-panel .login-panel-content {
+
+}
+.login-body .login-panel .logo-container {
+    text-align: left;
+}
+.login-body .login-panel .logo-container img {
+    display: block;
+    margin-bottom: 25px;
+}
+.login-body .login-panel .username-container, .login-body .login-panel .password-container {
+    text-align: left;
+}
+.login-body .login-panel h1 {
+    display: inline-block;
+    font-size: 16px;
+    background-color: #feedbc;
+    margin: 0 0 16px 0;
+    color: #666666;
+    padding: 4px 8px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+.login-body .login-panel .guest-sign-in {
+    color: #303030;
+}
+.login-body .login-panel label {
+    display: block;
+    color: white;
+    margin: 0.5em 0 0.5em 0;
+}
+.login-body .login-panel input {
+    background: #ffffff;
+    border: 1px solid blueviolet;
+
+
+}
+.login-body .login-panel .forgetpassword-container {
+    padding-top: 1em;
+    text-align: right;
+}
+.login-body .login-panel .rememberme-container {
+    padding-top: 1em;
+}
+.login-body .login-panel .rememberme-container label {
+    display: inline;
+    vertical-align: middle;
+    color: black;
+}
+.login-body .login-panel button {
+    margin-top: 0.5em;
+    /*display: block;*/
+    min-width: 120px;
+}
+.login-body .login-panel a {
+    color: #1cb9d7;
+}
+.login-body .login-panel .footer {
+    color: #65656a;
+    margin-top: 100%;
+}
+
+@media screen and (max-width: 40em) {
+    .login-body .login-image {
+        height: calc(100%);
+        width: calc(100%);
+        transform: scale(1.5);
+        background-position-x: -290px;
+        background-position-y: -160px;
+    }
+    .login-body .login-panel {
+        left: 0;
+        bottom: 0%;
+        width: 100%;
+        margin-bottom: 0px;
+        margin-top: 0;
+        margin-left: 0;
+        padding: 0 27px 20px 28px;
+        height: calc(100% - 128px);
+    }
+    .login-body .login-panel .login-panel-content {
+        margin-top: 30px;
+    }
+    .login-body .login-panel input {
+        width: 100%;
+    }
+    .login-body .login-panel .footer {
+        font-size: 11px;
+        padding-right: 11px;
+        margin-top: 60px;
+    }
+}
+

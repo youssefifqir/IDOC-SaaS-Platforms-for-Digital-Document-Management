@@ -1,0 +1,25 @@
+{
+    "code": "code-1",
+    "libelle": "libelle-1",
+    "utilisateur": {"id": "1"},
+
+    "groupeUtilisateurs": [
+        {
+            "utilisateur":{"id": "1"}
+        },
+        {
+            "utilisateur":{"id": "2"}
+        },
+        {
+            "utilisateur":{"id": "3"}
+        }
+    ]
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="">
+        <img src="assets/layout/images/logo-app.svg"    alt="logo">
+        <span class="some" ></span>
+    </a>
+
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <i class="pi pi-bars"></i>
+    </button>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+
+        <p-dropdown (onChange)="useLanguage(selectedLanguage)" [options]="languageOptions" [(ngModel)]="selectedLanguage"   [appendTo]="'body'"></p-dropdown>
+
+        <button  class="p-link layout-topbar-button" (click)="edit(authenticatedUser)">
+            <i class="pi pi-user"></i>
+            <span>Profile</span>
+        </button>
+
+        <button class="p-link layout-topbar-button" (click)="logout()">
+        <i class="pi pi-fw pi-sign-in"></i>
+        <span >signOut</span>
+    </button>
+    </div>
+</div>
+<p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="Edit profil"
+          [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'user.tabPan' | translate}}">
+                <div class="grid">
+
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'user.email' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                               placeholder="{{'user.email' | translate}}" id="3" [(ngModel)]="item.email"
+                        />
+
+                    </div>
+
+                    <div class="field col-12 md:col-6">
+                        <label for="6">{{'user.username' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                               placeholder="{{'user.username' | translate}}" id="6" [(ngModel)]="item.username"
+                        />
+
+                    </div>
+
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="{{'user.password' | translate}}">
+                <div class="grid">
+
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'user.password' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pPassword
+                               placeholder="{{'user.password' | translate}}" id="7" [(ngModel)]="item.password"
+                        />
+
+                    </div>
+
+                    <div class="field col-12 md:col-6">
+                        <label for="7">{{'user.password' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pPassword
+                               placeholder="{{'user.password' | translate}}" id="7" [(ngModel)]="item.password"
+                        />
+
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-flexbox">
+            <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined"
+                    (click)="hideEditDialog()"></button>
+            <button pButton pRipple label="Valider" icon="pi pi-check"
+                    (click)="editUser()"></button>
+        </div>
+    </ng-template>
+
+</p-dialog>

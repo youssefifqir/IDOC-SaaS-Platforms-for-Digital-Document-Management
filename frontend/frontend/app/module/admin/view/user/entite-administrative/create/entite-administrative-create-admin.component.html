@@ -1,0 +1,83 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'entiteAdministrative.tabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'entiteAdministrative.tabPan' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="1">{{'entiteAdministrative.code' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'entiteAdministrative.code' | translate}}" id="1" [(ngModel)]="item.code"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validEntiteAdministrativeCode}"  />
+                                                    <small class='p-error' *ngIf='!validEntiteAdministrativeCode'>Code est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'entiteAdministrative.description' | translate}}</label>
+                                                    <textarea id="2" pInputTextarea rows="5" cols="30" placeholder="{{'entiteAdministrative.description' | translate}}"  [(ngModel)]="item.description"
+                                                             ></textarea>
+
+                                                </div>
+                                           <!-- added-->
+                                    <div class="field col-12 md:col-6">
+                                        <label for="1">{{'entiteAdministrative.codeEntiteAdminParent' | translate}}<span style="color: red;">*</span></label>
+                                        <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'entiteAdministrative.codeEntiteAdminParent' | translate}}" id="1" [(ngModel)]="item.codeEntiteAdminParent"
+                                               [ngClass]="{'ng-invalid ng-dirty' : !validcodeEntiteAdminParent}"  />
+                                        <small class='p-error' *ngIf='!validcodeEntiteAdminParent'>Code est obligatoire.</small>
+                                    </div>
+                                          <!-- till -->
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'entiteAdministrative.libelle' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'entiteAdministrative.libelle' | translate}}" id="3" [(ngModel)]="item.libelle"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validEntiteAdministrativeLibelle}"  />
+                                                    <small class='p-error' *ngIf='!validEntiteAdministrativeLibelle'>Libelle est obligatoire.</small>
+                                                </div>
+
+
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="4">{{'entiteAdministrative.chef' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="chefs" [(ngModel)]="item.chef" id="4" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="id" placeholder="{{'entiteAdministrative.chef' | translate}}"  >
+                                                </p-dropdown>
+
+                                            </div>
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="5">{{'entiteAdministrative.entiteAdministrativeType' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="entiteAdministrativeTypes" [(ngModel)]="item.entiteAdministrativeType" id="5" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'entiteAdministrative.entiteAdministrativeType' | translate}}"  >
+                                                </p-dropdown>
+
+                                            </div>
+
+                                            <div class="field col-11 md:col-6">
+                                                <label for="6">{{'entiteAdministrative.abonne' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="abonnes" [(ngModel)]="item.abonne" id="6" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="id" placeholder="{{'entiteAdministrative.abonne' | translate}}"  >
+                                                </p-dropdown>
+
+                                            </div>
+
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-flexbox">
+
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check"  (click)="save()"></button>
+
+
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+
+
+                </div>
+            </ng-template>
+
+    </p-dialog>

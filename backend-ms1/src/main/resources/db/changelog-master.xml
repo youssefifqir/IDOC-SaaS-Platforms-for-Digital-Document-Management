@@ -1,0 +1,27 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+            <include file="classpath:db/migration/changelog/doc/DocumentField.xml"/>
+        <include file="classpath:db/migration/changelog/doc/Field.xml"/>
+        <include file="classpath:db/migration/changelog/purchase/DocumentPartageUtilisateur.xml"/>
+        <include file="classpath:db/migration/changelog/doc/EntiteAdministrativeType.xml"/>
+        <include file="classpath:db/migration/changelog/referetiel/AcessShare.xml"/>
+        <include file="classpath:db/migration/changelog/doc/DocumentTag.xml"/>
+        <include file="classpath:db/migration/changelog/doc/DocumentState.xml"/>
+        <include file="classpath:db/migration/changelog/purchase/DocumentPartageGroupe.xml"/>
+        <include file="classpath:db/migration/changelog/doc/Document.xml"/>
+        <include file="classpath:db/migration/changelog/doc/DocumentCategorie.xml"/>
+        <include file="classpath:db/migration/changelog/user/Utilisateur.xml"/>
+        <include file="classpath:db/migration/changelog/user/EntiteAdministrative.xml"/>
+        <include file="classpath:db/migration/changelog/doc/Tag.xml"/>
+        <include file="classpath:db/migration/changelog/referetiel/AcessManagement.xml"/>
+        <include file="classpath:db/migration/changelog/abonne/Abonne.xml"/>
+        <include file="classpath:db/migration/changelog/doc/DocumentType.xml"/>
+        <include file="classpath:db/migration/changelog/doc/DocumentFieldState.xml"/>
+        <include file="classpath:db/migration/changelog/doc/DocumentAcessShare.xml"/>
+        <include file="classpath:db/migration/changelog/purchase/GroupeUtilisateur.xml"/>
+        <include file="classpath:db/migration/changelog/user/Groupe.xml"/>
+
+</databaseChangeLog>

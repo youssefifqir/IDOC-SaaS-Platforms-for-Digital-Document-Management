@@ -1,0 +1,80 @@
+{
+    "reference": "#string",
+    "content": "#string",
+    "folder": "#bool",
+    "size": "#number",
+    "documentType": {"id": "#number"},
+    "documentState": {"id": "#number"},
+    "documentCategorie": {"id": "#number"},
+    "description": "#string",
+    "proprietaire": {"id": "#number"},
+    "archive": "#bool",
+    "versionne": "#bool",
+    "entiteAdministrative": {"id": "#number"},
+    "entiteAdministrativeProprietaire": {"id": "#number"},
+
+    "documentFields": [
+      {
+        "field":{"id": "#number"},}
+        "value":"#string",}
+        "documentFieldState":{"id": "#number"}}
+      },
+      {
+        "field":{"id": "#number"},}
+        "value":"#string",}
+        "documentFieldState":{"id": "#number"}}
+      },
+      {
+        "field":{"id": "#number"},}
+        "value":"#string",}
+        "documentFieldState":{"id": "#number"}}
+      }
+    ],
+    "documentPartageGroupes": [
+      {
+        "groupe":{"id": "#number"},}
+        "acessShare":{"id": "#number"}}
+      },
+      {
+        "groupe":{"id": "#number"},}
+        "acessShare":{"id": "#number"}}
+      },
+      {
+        "groupe":{"id": "#number"},}
+        "acessShare":{"id": "#number"}}
+      }
+    ],
+    "documentPartageUtilisateurs": [
+      {
+        "utilisateur":{"id": "#number"},}
+        "acessShare":{"id": "#number"}}
+      },
+      {
+        "utilisateur":{"id": "#number"},}
+        "acessShare":{"id": "#number"}}
+      },
+      {
+        "utilisateur":{"id": "#number"},}
+        "acessShare":{"id": "#number"}}
+      }
+    ],
+    "documentTags": [
+      {
+        "tag":{"id": "#number"}}
+      },
+      {
+        "tag":{"id": "#number"}}
+      },
+      {
+        "tag":{"id": "#number"}}
+      }
+    ]
+}
+
+
+
+
+
+
+
+

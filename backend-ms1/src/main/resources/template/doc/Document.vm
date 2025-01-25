@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            box-shadow: 0 0 10px #ddd;
+        }
+
+        .header {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 35px;
+            font-weight: bold;
+            margin: 0;
+            color: #c9302c;
+        }
+
+        .company-info {
+            margin-bottom: 20px;
+        }
+
+        .company-info p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .invoice-details {
+            margin-bottom: 20px;
+        }
+
+        .invoice-details p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            height: 40px;
+            text-align: left;
+            font-size: 17px;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        .totals {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .totals p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header" style="font-family: Noto Sans JP, sans-serif;">
+        <h1>REÇU</h1>
+    </div>
+    <br/>
+    <hr style="color:#c9302c ;height: 3px"></hr>
+    <br/>
+
+    #macro(displayComposedDataIfNotNull $object $dataToDisplay)
+    #if($object)$dataToDisplay#else---#end
+    #end
+    #macro(displayDataIfNotNull $object)
+    #if($object)$object#else---#end
+    #end
+    <table style="width: 100%">
+
+                        <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Reference:</span> #displayDataIfNotNull($reference)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Upload date:</span> #displayDataIfNotNull($uploadDate)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Date last update:</span> #displayDataIfNotNull($dateLastUpdate)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Content:</span> #displayDataIfNotNull($content)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Folder:</span> #displayDataIfNotNull($folder)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Size:</span> #displayDataIfNotNull($size)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Document type:</span> #displayComposedDataIfNotNull($documentType,$documentType.libelle)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Document state:</span> #displayComposedDataIfNotNull($documentState,$documentState.libelle)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Document categorie:</span> #displayComposedDataIfNotNull($documentCategorie,$documentCategorie.libelle)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Proprietaire:</span> #displayComposedDataIfNotNull($proprietaire,$proprietaire.id)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Archive:</span> #displayDataIfNotNull($archive)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Versionne:</span> #displayDataIfNotNull($versionne)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Entite administrative:</span> #displayComposedDataIfNotNull($entiteAdministrative,$entiteAdministrative.libelle)</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;border-bottom: 0"><span style="font-weight: bold;">Entite administrative proprietaire:</span> #displayComposedDataIfNotNull($entiteAdministrativeProprietaire,$entiteAdministrativeProprietaire.libelle)</td>
+                </tr>
+
+    </table>
+    <br/><br/><br/><br/><br/>
+    <h1>Document fields</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+                <th>Document field state</th>
+            </tr>
+        </thead>
+        <tbody>
+                #foreach( $item in $documentFields )
+                #if( ($foreach.index % 2) == 0 )
+                <tr style="background-color: #f4f5f6">
+                    #else
+                <tr style="background-color: #e9ebec">
+                    #end
+                    <td>#displayDataIfNotNull($item.field,$item.field.libelle)</td>
+                    <td>#displayDataIfNotNull($item.value)</td>
+                    <td>#displayDataIfNotNull($item.documentFieldState,$item.documentFieldState.libelle)</td>
+                </tr>
+                #end
+        </tbody>
+    </table>
+    <h1>Document partage groupes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Groupe</th>
+                <th>Date share</th>
+                <th>Acess share</th>
+            </tr>
+        </thead>
+        <tbody>
+                #foreach( $item in $documentPartageGroupes )
+                #if( ($foreach.index % 2) == 0 )
+                <tr style="background-color: #f4f5f6">
+                    #else
+                <tr style="background-color: #e9ebec">
+                    #end
+                    <td>#displayDataIfNotNull($item.groupe,$item.groupe.libelle)</td>
+                    <td>#displayDataIfNotNull($item.dateShare)</td>
+                    <td>#displayDataIfNotNull($item.acessShare,$item.acessShare.libelle)</td>
+                </tr>
+                #end
+        </tbody>
+    </table>
+    <h1>Document partage utilisateurs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Utilisateur</th>
+                <th>Date share</th>
+                <th>Acess share</th>
+            </tr>
+        </thead>
+        <tbody>
+                #foreach( $item in $documentPartageUtilisateurs )
+                #if( ($foreach.index % 2) == 0 )
+                <tr style="background-color: #f4f5f6">
+                    #else
+                <tr style="background-color: #e9ebec">
+                    #end
+                    <td>#displayDataIfNotNull($item.utilisateur,$item.utilisateur.id)</td>
+                    <td>#displayDataIfNotNull($item.dateShare)</td>
+                    <td>#displayDataIfNotNull($item.acessShare,$item.acessShare.libelle)</td>
+                </tr>
+                #end
+        </tbody>
+    </table>
+    <br/><br/>
+
+    <div class="footer">
+        <p style="font-size: 25px">MERCI POUR VOTRE SERVICE!</p>
+        <p style="font-size: 18px">Si vous avez des questions, veillez contacter nous.</p>
+    </div>
+    <br/><br/>
+    <hr style="color:#c9302c ;height: 3px"></hr>
+</div>
+</body>
+</html>
+
