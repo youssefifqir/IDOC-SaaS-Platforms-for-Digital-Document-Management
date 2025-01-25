@@ -39,5 +39,5 @@ A **Document Management System (DMS)** built to streamline the storage, organiza
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/DMS.git
-   cd DMS
+   git clone https://github.com/youssefifqir/IDOC-SaaS-Platforms-for-Digital-Document-Management.git
+   cd IDOC-SaaS-Platforms-for-Digital-Document-Management
